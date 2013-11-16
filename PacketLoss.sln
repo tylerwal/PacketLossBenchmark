@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketLoss.Domain", "PacketLoss.Domain\PacketLoss.Domain.csproj", "{4CE18F9E-B181-473E-8510-0C510B62F418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketLoss.ConsoleBased", "PacketLoss.Console\PacketLoss.ConsoleBased.csproj", "{E1D04E2C-B3BB-43A2-86AF-DF9DEFDEF0FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketLoss.UI", "PacketLoss.UI\PacketLoss.UI.csproj", "{D0FE226F-EA34-4251-8583-834F927733C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CE18F9E-B181-473E-8510-0C510B62F418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE18F9E-B181-473E-8510-0C510B62F418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE18F9E-B181-473E-8510-0C510B62F418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE18F9E-B181-473E-8510-0C510B62F418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D04E2C-B3BB-43A2-86AF-DF9DEFDEF0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D04E2C-B3BB-43A2-86AF-DF9DEFDEF0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D04E2C-B3BB-43A2-86AF-DF9DEFDEF0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D04E2C-B3BB-43A2-86AF-DF9DEFDEF0FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FE226F-EA34-4251-8583-834F927733C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FE226F-EA34-4251-8583-834F927733C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FE226F-EA34-4251-8583-834F927733C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FE226F-EA34-4251-8583-834F927733C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal
