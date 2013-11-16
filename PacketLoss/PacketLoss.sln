@@ -10,6 +10,24 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketLoss.UI", "PacketLoss.UI\PacketLoss.UI.csproj", "{D0FE226F-EA34-4251-8583-834F927733C4}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PacketLoss\\PacketLoss.UI-WPF_Attempt.csproj
+		SccProjectName1 = PacketLoss
+		SccLocalPath1 = PacketLoss
+		SccProjectUniqueName2 = PacketLoss.Domain\\PacketLoss.Domain.csproj
+		SccProjectName2 = PacketLoss.Domain
+		SccLocalPath2 = PacketLoss.Domain
+		SccProjectUniqueName3 = PacketLoss.Console\\PacketLoss.ConsoleBased.csproj
+		SccProjectName3 = PacketLoss.Console
+		SccLocalPath3 = PacketLoss.Console
+		SccProjectUniqueName4 = PacketLoss.UI\\PacketLoss.UI.csproj
+		SccProjectName4 = PacketLoss.UI
+		SccLocalPath4 = PacketLoss.UI
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
