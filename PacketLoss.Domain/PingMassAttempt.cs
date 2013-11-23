@@ -113,16 +113,16 @@ namespace PacketLoss.Domain
 
 		private static void Main()
 		{
-			PingInstance attemp1 = new PingInstance
+			PingInstance attempt = new PingInstance
 			{
 				Address = "www.google.com",
 				BufferString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-				TimeOut = 500,
+				TimeOut = 1000,
 				DontFragment = false,
 				TimeToLive = 128
 			};
 
-			PingMassAttempt pingMassAttempt = new PingMassAttempt(100, attemp1);
+			PingMassAttempt pingMassAttempt = new PingMassAttempt(100, attempt);
 
 			Console.WriteLine(pingMassAttempt.PingReplies.Average(i => i.RoundTripTime));
 

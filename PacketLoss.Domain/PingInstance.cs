@@ -123,7 +123,7 @@ namespace PacketLoss.Domain
 		public PingInstance()
 		{
 			_address = String.Empty;
-			_timeOut = 120;
+			_timeOut = 1000;
 			_bufferString = String.Empty;
 			_timeToLive = 128;
 			_dontFragment = true;

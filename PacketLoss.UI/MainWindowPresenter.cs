@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace PacketLoss.UI
 {
+	using System.Windows.Forms.VisualStyles;
+
 	public class MainWindowPresenter
 	{
 		#region Fields
@@ -15,9 +17,7 @@ namespace PacketLoss.UI
 		private BackgroundWorker _backgroundWorker;
 
 		private int _numberOfPingAttempts;
-
-		private IList<PingInstance> _pingAttempts;
-
+		
 		private IList<PingInstanceReply> _pingReplies;
 
 		private PingInstance _pingInstance;
@@ -27,6 +27,8 @@ namespace PacketLoss.UI
 		private PingReply _pingReply;
 
 		private int _progress;
+
+		private MainWindow _mainWindow;
 		
 		#endregion Fields
 
@@ -44,18 +46,6 @@ namespace PacketLoss.UI
 			}
 		}
 
-		public IList<PingInstance> PingAttempts
-		{
-			get
-			{
-				return _pingAttempts;
-			}
-			set
-			{
-				_pingAttempts = value;
-			}
-		}
-
 		public IList<PingInstanceReply> PingReplies
 		{
 			get
@@ -67,6 +57,20 @@ namespace PacketLoss.UI
 				_pingReplies = value;
 			}
 		}
+
+		public MainWindow MainWindow
+		{
+			get
+			{
+				return _mainWindow;
+			}
+			set
+			{
+				_mainWindow = value;
+			}
+		}
+
+		
 		
 		#endregion Properties
 
@@ -128,15 +132,13 @@ namespace PacketLoss.UI
 
 				//for progress bar
 				_progress = (Convert.ToInt32(((decimal)currentPingNumber / (decimal)_numberOfPingAttempts) * 100) + 2);
-				
+
 				if (currentPingNumber == _numberOfPingAttempts)
 				{
 					_progress = 100;
 				}
 
-				_backgroundWorker.ReportProgress(_progress);
-
-				//Convert.ToInt32((currentPingNumber / _numberOfPingAttempts) * 100)
+				_backgroundWorker.ReportProgress(_progress, reply);
 			}
 		}
 
@@ -165,7 +167,7 @@ namespace PacketLoss.UI
 					Address = pingCriteria.Address,
 					BufferString = pingCriteria.Buffer ?? "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 					DontFragment = pingCriteria.DontFragment,
-					TimeOut = Convert.ToInt32(pingCriteria.TimeOut ?? "120"),
+					TimeOut = Convert.ToInt32(pingCriteria.TimeOut ?? "1000"),
 					TimeToLive = Convert.ToInt32(pingCriteria.TimeToLive ?? "120")
 				};
 

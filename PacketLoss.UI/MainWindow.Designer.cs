@@ -54,6 +54,10 @@
 			this.txtSettingsAddress = new System.Windows.Forms.TextBox();
 			this.lblSettingsAddress = new System.Windows.Forms.Label();
 			this.gbxRealTime = new System.Windows.Forms.GroupBox();
+			this.lblRealTimePingStatus = new System.Windows.Forms.Label();
+			this.txtRealTimePingStatus = new System.Windows.Forms.TextBox();
+			this.lblRealTimePingTime = new System.Windows.Forms.Label();
+			this.txtRealTimePingTime = new System.Windows.Forms.TextBox();
 			this.gbxPingResults = new System.Windows.Forms.GroupBox();
 			this.txtSuccessfulPings = new System.Windows.Forms.TextBox();
 			this.bsPingReplyStats = new System.Windows.Forms.BindingSource(this.components);
@@ -62,13 +66,13 @@
 			this.lblReplyAverageRoundTripTime = new System.Windows.Forms.Label();
 			this.dgvPingReplies = new System.Windows.Forms.DataGridView();
 			this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.roundTripTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bsPingReplies = new System.Windows.Forms.BindingSource(this.components);
 			this.gbxPingSettings.SuspendLayout();
 			this.gbxPingSettingsOptional.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bsCriteria)).BeginInit();
 			this.gbxPingSettingsRequired.SuspendLayout();
+			this.gbxRealTime.SuspendLayout();
 			this.gbxPingResults.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplyStats)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPingReplies)).BeginInit();
@@ -273,12 +277,56 @@
 			// 
 			// gbxRealTime
 			// 
+			this.gbxRealTime.Controls.Add(this.lblRealTimePingStatus);
+			this.gbxRealTime.Controls.Add(this.txtRealTimePingStatus);
+			this.gbxRealTime.Controls.Add(this.lblRealTimePingTime);
+			this.gbxRealTime.Controls.Add(this.txtRealTimePingTime);
 			this.gbxRealTime.Location = new System.Drawing.Point(13, 260);
 			this.gbxRealTime.Name = "gbxRealTime";
-			this.gbxRealTime.Size = new System.Drawing.Size(560, 77);
+			this.gbxRealTime.Size = new System.Drawing.Size(263, 77);
 			this.gbxRealTime.TabIndex = 1;
 			this.gbxRealTime.TabStop = false;
 			this.gbxRealTime.Text = "Real Time Stats";
+			// 
+			// lblRealTimePingStatus
+			// 
+			this.lblRealTimePingStatus.AutoSize = true;
+			this.lblRealTimePingStatus.Location = new System.Drawing.Point(109, 20);
+			this.lblRealTimePingStatus.Name = "lblRealTimePingStatus";
+			this.lblRealTimePingStatus.Size = new System.Drawing.Size(74, 13);
+			this.lblRealTimePingStatus.TabIndex = 3;
+			this.lblRealTimePingStatus.Text = "Current Status";
+			// 
+			// txtRealTimePingStatus
+			// 
+			this.txtRealTimePingStatus.BackColor = System.Drawing.SystemColors.MenuText;
+			this.txtRealTimePingStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtRealTimePingStatus.ForeColor = System.Drawing.Color.Lime;
+			this.txtRealTimePingStatus.Location = new System.Drawing.Point(112, 39);
+			this.txtRealTimePingStatus.Name = "txtRealTimePingStatus";
+			this.txtRealTimePingStatus.Size = new System.Drawing.Size(141, 32);
+			this.txtRealTimePingStatus.TabIndex = 2;
+			this.txtRealTimePingStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// lblRealTimePingTime
+			// 
+			this.lblRealTimePingTime.AutoSize = true;
+			this.lblRealTimePingTime.Location = new System.Drawing.Point(7, 20);
+			this.lblRealTimePingTime.Name = "lblRealTimePingTime";
+			this.lblRealTimePingTime.Size = new System.Drawing.Size(65, 13);
+			this.lblRealTimePingTime.TabIndex = 1;
+			this.lblRealTimePingTime.Text = "Current Ping";
+			// 
+			// txtRealTimePingTime
+			// 
+			this.txtRealTimePingTime.BackColor = System.Drawing.SystemColors.MenuText;
+			this.txtRealTimePingTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtRealTimePingTime.ForeColor = System.Drawing.Color.Lime;
+			this.txtRealTimePingTime.Location = new System.Drawing.Point(6, 39);
+			this.txtRealTimePingTime.Name = "txtRealTimePingTime";
+			this.txtRealTimePingTime.Size = new System.Drawing.Size(100, 32);
+			this.txtRealTimePingTime.TabIndex = 0;
+			this.txtRealTimePingTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// gbxPingResults
 			// 
@@ -289,7 +337,7 @@
 			this.gbxPingResults.Controls.Add(this.dgvPingReplies);
 			this.gbxPingResults.Location = new System.Drawing.Point(13, 343);
 			this.gbxPingResults.Name = "gbxPingResults";
-			this.gbxPingResults.Size = new System.Drawing.Size(560, 186);
+			this.gbxPingResults.Size = new System.Drawing.Size(395, 173);
 			this.gbxPingResults.TabIndex = 2;
 			this.gbxPingResults.TabStop = false;
 			this.gbxPingResults.Text = "Results";
@@ -297,7 +345,7 @@
 			// txtSuccessfulPings
 			// 
 			this.txtSuccessfulPings.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPingReplyStats, "SuccessfulPings", true));
-			this.txtSuccessfulPings.Location = new System.Drawing.Point(406, 83);
+			this.txtSuccessfulPings.Location = new System.Drawing.Point(262, 83);
 			this.txtSuccessfulPings.Name = "txtSuccessfulPings";
 			this.txtSuccessfulPings.Size = new System.Drawing.Size(69, 20);
 			this.txtSuccessfulPings.TabIndex = 7;
@@ -305,7 +353,7 @@
 			// txtAverageRoundTripTime
 			// 
 			this.txtAverageRoundTripTime.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsPingReplyStats, "AverageRoundTripTime", true));
-			this.txtAverageRoundTripTime.Location = new System.Drawing.Point(406, 36);
+			this.txtAverageRoundTripTime.Location = new System.Drawing.Point(262, 36);
 			this.txtAverageRoundTripTime.Name = "txtAverageRoundTripTime";
 			this.txtAverageRoundTripTime.Size = new System.Drawing.Size(69, 20);
 			this.txtAverageRoundTripTime.TabIndex = 6;
@@ -313,7 +361,7 @@
 			// lblUnsuccesfulPingPercentage
 			// 
 			this.lblUnsuccesfulPingPercentage.AutoSize = true;
-			this.lblUnsuccesfulPingPercentage.Location = new System.Drawing.Point(403, 67);
+			this.lblUnsuccesfulPingPercentage.Location = new System.Drawing.Point(259, 67);
 			this.lblUnsuccesfulPingPercentage.Name = "lblUnsuccesfulPingPercentage";
 			this.lblUnsuccesfulPingPercentage.Size = new System.Drawing.Size(83, 13);
 			this.lblUnsuccesfulPingPercentage.TabIndex = 5;
@@ -322,7 +370,7 @@
 			// lblReplyAverageRoundTripTime
 			// 
 			this.lblReplyAverageRoundTripTime.AutoSize = true;
-			this.lblReplyAverageRoundTripTime.Location = new System.Drawing.Point(403, 19);
+			this.lblReplyAverageRoundTripTime.Location = new System.Drawing.Point(259, 19);
 			this.lblReplyAverageRoundTripTime.Name = "lblReplyAverageRoundTripTime";
 			this.lblReplyAverageRoundTripTime.Size = new System.Drawing.Size(129, 13);
 			this.lblReplyAverageRoundTripTime.TabIndex = 4;
@@ -343,9 +391,8 @@
 			this.dgvPingReplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvPingReplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvPingReplies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-		  this.statusDataGridViewTextBoxColumn,
-		  this.addressDataGridViewTextBoxColumn,
-		  this.roundTripTimeDataGridViewTextBoxColumn});
+            this.statusDataGridViewTextBoxColumn,
+            this.roundTripTimeDataGridViewTextBoxColumn});
 			this.dgvPingReplies.DataSource = this.bsPingReplies;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -366,26 +413,20 @@
 			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.dgvPingReplies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this.dgvPingReplies.Size = new System.Drawing.Size(370, 150);
+			this.dgvPingReplies.Size = new System.Drawing.Size(247, 150);
 			this.dgvPingReplies.TabIndex = 3;
 			// 
 			// statusDataGridViewTextBoxColumn
 			// 
+			this.statusDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
 			this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
 			this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
 			this.statusDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// addressDataGridViewTextBoxColumn
-			// 
-			this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-			this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-			this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-			this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-			this.addressDataGridViewTextBoxColumn.Width = 125;
-			// 
 			// roundTripTimeDataGridViewTextBoxColumn
 			// 
+			this.roundTripTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.roundTripTimeDataGridViewTextBoxColumn.DataPropertyName = "RoundTripTime";
 			this.roundTripTimeDataGridViewTextBoxColumn.HeaderText = "Round Trip Time";
 			this.roundTripTimeDataGridViewTextBoxColumn.Name = "roundTripTimeDataGridViewTextBoxColumn";
@@ -412,6 +453,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.bsCriteria)).EndInit();
 			this.gbxPingSettingsRequired.ResumeLayout(false);
 			this.gbxPingSettingsRequired.PerformLayout();
+			this.gbxRealTime.ResumeLayout(false);
+			this.gbxRealTime.PerformLayout();
 			this.gbxPingResults.ResumeLayout(false);
 			this.gbxPingResults.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplyStats)).EndInit();
@@ -452,10 +495,13 @@
 		private System.Windows.Forms.TextBox txtAverageRoundTripTime;
 		private System.Windows.Forms.Label lblUnsuccesfulPingPercentage;
 		private System.Windows.Forms.Label lblReplyAverageRoundTripTime;
-		private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn roundTripTimeDataGridViewTextBoxColumn;
 		private System.Windows.Forms.BindingSource bsPingReplyStats;
+		private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn roundTripTimeDataGridViewTextBoxColumn;
+		private System.Windows.Forms.Label lblRealTimePingTime;
+		private System.Windows.Forms.TextBox txtRealTimePingTime;
+		private System.Windows.Forms.Label lblRealTimePingStatus;
+		private System.Windows.Forms.TextBox txtRealTimePingStatus;
 	}
 }
 

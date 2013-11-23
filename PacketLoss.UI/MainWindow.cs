@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 namespace PacketLoss.UI
 {
+	using System.Drawing;
+
 	public partial class MainWindow : Form
 	{
 
@@ -22,10 +24,32 @@ namespace PacketLoss.UI
 
 		private MainWindowPresenter _mainWindowPresenter;
 
+		private List<PingReply> _lastFivePingReplies; 
+
 		#endregion Fields
 
 		#region Properties
 
+		/*public int RealTimePing
+		{
+			set
+			{
+				this.txtRealTimePing.Text = value.ToString();
+			}
+		}*/
+
+		/*public TextBox RealTimePing
+		{
+			get
+			{
+				return txtRealTimePing;
+			}
+			set
+			{
+				txtRealTimePing = value;
+			}
+		}*/
+		
 		#endregion Properties
 
 		#region Constructors
@@ -37,8 +61,13 @@ namespace PacketLoss.UI
 			_settingsCriteria = new PingCriteria();
 
 			_pingReplyStats = new PingReplyStats();
+
+			_lastFivePingReplies = new List<PingReply>(5);
 			
-			_mainWindowPresenter = new MainWindowPresenter();
+			_mainWindowPresenter = new MainWindowPresenter
+			{
+				MainWindow = this
+			};
 
 			bsCriteria.DataSource = _settingsCriteria;
 
@@ -51,24 +80,27 @@ namespace PacketLoss.UI
 			btnSettingsStop.Click += BtnSettingsStop_Click;
 			btnSettingsTest.Click += BtnSettingsTest_Click;
 			_mainWindowPresenter.BackgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
+
 			_mainWindowPresenter.BackgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
 			
 			#endregion Event Handler Declaration
-
 		}
 
-		
 
-		void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
 			pbPingProgress.Value = (e.ProgressPercentage > 100) ? 100 : e.ProgressPercentage;
+
+			PingReply currentPingReply = (PingReply)e.UserState;
+
+			UpdateRealTimePing(currentPingReply);
 		}
 
 		#endregion Constructors
 
 		#region Event Handlers
 
-		void BtnSettingsStop_Click(object sender, EventArgs e)
+		private void BtnSettingsStop_Click(object sender, EventArgs e)
 		{
 			if (_mainWindowPresenter.BackgroundWorker != null)
 			{
@@ -76,12 +108,12 @@ namespace PacketLoss.UI
 			}
 		}
 
-		void BtnSettingsReset_Click(object sender, EventArgs e)
+		private void BtnSettingsReset_Click(object sender, EventArgs e)
 		{
 			ResetCriteria();
 		}
 
-		void BtnSettingsStart_Click(object sender, EventArgs e)
+		private void BtnSettingsStart_Click(object sender, EventArgs e)
 		{
 			_settingsCriteria = (PingCriteria)bsCriteria.DataSource;
 
@@ -93,7 +125,7 @@ namespace PacketLoss.UI
 			btnSettingsStart.Enabled = false;
 		}
 
-		void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			btnSettingsStart.Text = "Start";
 			btnSettingsStart.Enabled = true;
@@ -102,18 +134,11 @@ namespace PacketLoss.UI
 
 			bsPingReplies.DataSource = pingReplies;
 
-			/*_pingReplyStats = (PingReplyStats)bsPingReplyStats.DataSource;
-
-			_pingReplyStats.AverageRoundTripTime = pingReplies.Average(i => i.RoundTripTime);
-			_pingReplyStats.SuccessfulPings = pingReplies.Count(i => i.Status == IPStatus.Success);
-
-			bsPingReplyStats.DataSource = _pingReplyStats;*/
-
 			txtAverageRoundTripTime.Text = Convert.ToString(pingReplies.Average(i => i.RoundTripTime));
 			txtSuccessfulPings.Text = Convert.ToString(pingReplies.Count(i => i.Status == IPStatus.Success));
 		}
 
-		void BtnSettingsTest_Click(object sender, EventArgs e)
+		private void BtnSettingsTest_Click(object sender, EventArgs e)
 		{
 			_settingsCriteria = (PingCriteria)bsCriteria.DataSource;
 
@@ -124,11 +149,38 @@ namespace PacketLoss.UI
 		
 		#region Methods
 
-		void ResetCriteria()
+		private void ResetCriteria()
 		{
 			PingCriteria pingCriteria = new PingCriteria();
 
 			bsCriteria.DataSource = pingCriteria;
+		}
+
+		private void UpdateRealTimePing(PingReply currentPingReply)
+		{
+			//Round Trip Time
+			if (_lastFivePingReplies.Count >= 5)
+			{
+				_lastFivePingReplies.RemoveAt(0);
+			}
+
+			_lastFivePingReplies.Add(currentPingReply);
+
+			string averagePingTime = _lastFivePingReplies.Select(i => i.RoundtripTime).Average().ToString();
+
+			txtRealTimePingTime.Text = string.Format("{0:0.0}", double.Parse(averagePingTime)); 
+
+			//Status
+			if (currentPingReply.Status != IPStatus.Success)
+			{
+				txtRealTimePingStatus.ForeColor = Color.Red;
+			}
+			else
+			{
+				txtRealTimePingStatus.ForeColor = Color.Lime;
+			}
+
+			txtRealTimePingStatus.Text = currentPingReply.Status.ToString();
 		}
 
 		#endregion Methods
