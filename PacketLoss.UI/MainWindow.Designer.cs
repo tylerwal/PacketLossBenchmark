@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.gbxPingSettings = new System.Windows.Forms.GroupBox();
 			this.btnSettingsTest = new System.Windows.Forms.Button();
 			this.btnSettingsReset = new System.Windows.Forms.Button();
@@ -68,6 +68,7 @@
 			this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.roundTripTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bsPingReplies = new System.Windows.Forms.BindingSource(this.components);
+			this.btnSaveResults = new System.Windows.Forms.Button();
 			this.gbxPingSettings.SuspendLayout();
 			this.gbxPingSettingsOptional.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bsCriteria)).BeginInit();
@@ -330,6 +331,7 @@
 			// 
 			// gbxPingResults
 			// 
+			this.gbxPingResults.Controls.Add(this.btnSaveResults);
 			this.gbxPingResults.Controls.Add(this.txtSuccessfulPings);
 			this.gbxPingResults.Controls.Add(this.txtAverageRoundTripTime);
 			this.gbxPingResults.Controls.Add(this.lblUnsuccesfulPingPercentage);
@@ -381,38 +383,38 @@
 			this.dgvPingReplies.AllowUserToAddRows = false;
 			this.dgvPingReplies.AllowUserToDeleteRows = false;
 			this.dgvPingReplies.AutoGenerateColumns = false;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvPingReplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvPingReplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgvPingReplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvPingReplies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.statusDataGridViewTextBoxColumn,
             this.roundTripTimeDataGridViewTextBoxColumn});
 			this.dgvPingReplies.DataSource = this.bsPingReplies;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvPingReplies.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvPingReplies.DefaultCellStyle = dataGridViewCellStyle5;
 			this.dgvPingReplies.Location = new System.Drawing.Point(6, 19);
 			this.dgvPingReplies.Name = "dgvPingReplies";
 			this.dgvPingReplies.ReadOnly = true;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvPingReplies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvPingReplies.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dgvPingReplies.Size = new System.Drawing.Size(247, 150);
 			this.dgvPingReplies.TabIndex = 3;
 			// 
@@ -435,6 +437,15 @@
 			// bsPingReplies
 			// 
 			this.bsPingReplies.DataSource = typeof(PacketLoss.Domain.PingInstanceReply);
+			// 
+			// btnSaveResults
+			// 
+			this.btnSaveResults.Location = new System.Drawing.Point(262, 110);
+			this.btnSaveResults.Name = "btnSaveResults";
+			this.btnSaveResults.Size = new System.Drawing.Size(75, 23);
+			this.btnSaveResults.TabIndex = 8;
+			this.btnSaveResults.Text = "Save Results";
+			this.btnSaveResults.UseVisualStyleBackColor = true;
 			// 
 			// MainWindow
 			// 
@@ -502,6 +513,7 @@
 		private System.Windows.Forms.TextBox txtRealTimePingTime;
 		private System.Windows.Forms.Label lblRealTimePingStatus;
 		private System.Windows.Forms.TextBox txtRealTimePingStatus;
+		private System.Windows.Forms.Button btnSaveResults;
 	}
 }
 

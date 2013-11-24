@@ -10,6 +10,9 @@ using System.Windows.Forms;
 namespace PacketLoss.UI
 {
 	using System.Drawing;
+	using System.IO;
+
+	using ClosedXML.Excel;
 
 	public partial class MainWindow : Form
 	{
@@ -72,20 +75,25 @@ namespace PacketLoss.UI
 			bsCriteria.DataSource = _settingsCriteria;
 
 			bsPingReplyStats.DataSource = _pingReplyStats;
-			
+
 			#region Event Handler Declaration
 
 			btnSettingsStart.Click += BtnSettingsStart_Click;
 			btnSettingsReset.Click += BtnSettingsReset_Click;
 			btnSettingsStop.Click += BtnSettingsStop_Click;
 			btnSettingsTest.Click += BtnSettingsTest_Click;
+			btnSaveResults.Click += btnSaveResults_Click;
+
 			_mainWindowPresenter.BackgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
 
 			_mainWindowPresenter.BackgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
 			
 			#endregion Event Handler Declaration
 		}
+		
+		#endregion Constructors
 
+		#region Event Handlers
 
 		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
@@ -96,9 +104,25 @@ namespace PacketLoss.UI
 			UpdateRealTimePing(currentPingReply);
 		}
 
-		#endregion Constructors
+		private void btnSaveResults_Click(object sender, EventArgs e)
+		{
+			if (bsPingReplies.DataSource is IList<PingInstanceReply>)
+			{
+				SaveFileDialog sfdWorkbookSave = new SaveFileDialog
+					{
+						Title = "Save Results",
+						ValidateNames = true,
+						AddExtension = true,
+						DefaultExt = "xlsx",
+						AutoUpgradeEnabled = true,
+						Filter = "Excel Files (*.xlsx)|*.xlsx"
+					};
 
-		#region Event Handlers
+				sfdWorkbookSave.ShowDialog();
+
+				SaveResults(sfdWorkbookSave.FileName); 
+			}
+		}
 
 		private void BtnSettingsStop_Click(object sender, EventArgs e)
 		{
@@ -183,7 +207,47 @@ namespace PacketLoss.UI
 			txtRealTimePingStatus.Text = currentPingReply.Status.ToString();
 		}
 
-		#endregion Methods
+		private void SaveResults(string fileName)
+		{
+			IList<PingInstanceReply> replyList = (IList<PingInstanceReply>)bsPingReplies.DataSource;
 
+			PingInstanceReply singleReply = replyList.First();
+
+			XLWorkbook workBook = new XLWorkbook();
+
+			IXLWorksheet workSheet = workBook.Worksheets.Add("Results");
+
+			workSheet.Cell(1, 1).Value = "Address";
+			workSheet.Cell(1, 2).Value = singleReply.Address.ToString();
+
+			workSheet.Cell(2, 1).Value = "Buffer Length";
+			workSheet.Cell(2, 2).Value = singleReply.BufferLength.Value;
+
+			workSheet.Cell(3, 1).Value = "Fragment";
+			workSheet.Cell(3, 2).Value = singleReply.DontFragment.ToString();
+
+			workSheet.Cell(4, 1).Value = "Time To Live";
+			workSheet.Cell(4, 2).Value = singleReply.TimeToLive.Value;
+
+			workSheet.Cell(5, 1).Value = "Number Of Pings";
+			workSheet.Cell(5, 2).Value = replyList.Count;
+
+			workSheet.Cell(7, 1).Value = "Ping Number";
+			workSheet.Cell(7, 2).Value = "Status";
+			workSheet.Cell(7, 3).Value = "Round Trip Time";
+
+			for (int i = 8; i <= replyList.Count + 7; i++)
+			{
+				workSheet.Cell(i, 1).Value = i - 7;
+				workSheet.Cell(i, 2).Value = replyList[i - 8].Status.ToString();
+				workSheet.Cell(i, 3).Value = replyList[i - 8].RoundTripTime.ToString();
+			}
+
+			workBook.SaveAs(fileName);
+
+			workBook.Dispose();
+		}
+
+		#endregion Methods
 	}
 }
