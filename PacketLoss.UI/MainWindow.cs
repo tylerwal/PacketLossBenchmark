@@ -1,18 +1,16 @@
-﻿using System.Linq;
-using System.Net.NetworkInformation;
+﻿using ClosedXML.Excel;
 using PacketLoss.Domain;
 using PacketLoss.UI.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
 namespace PacketLoss.UI
 {
-	using System.Drawing;
-	using System.IO;
-
-	using ClosedXML.Excel;
 
 	public partial class MainWindow : Form
 	{
@@ -82,7 +80,14 @@ namespace PacketLoss.UI
 			btnSettingsReset.Click += BtnSettingsReset_Click;
 			btnSettingsStop.Click += BtnSettingsStop_Click;
 			btnSettingsTest.Click += BtnSettingsTest_Click;
-			btnSaveResults.Click += btnSaveResults_Click;
+			btnSaveResults.Click += BtnSaveResults_Click;
+
+			startTestToolStripMenuItem.Click += BtnSettingsStart_Click;
+			testToolStripMenuItem.Click += BtnSettingsTest_Click;
+			stopTestToolStripMenuItem.Click += BtnSettingsStop_Click;
+			saveResultsToolStripMenuItem.Click += BtnSaveResults_Click;
+			resetSettingsToolStripMenuItem.Click += BtnSettingsReset_Click;
+			exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 
 			_mainWindowPresenter.BackgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
 
@@ -90,10 +95,15 @@ namespace PacketLoss.UI
 			
 			#endregion Event Handler Declaration
 		}
-		
+
 		#endregion Constructors
 
 		#region Event Handlers
+
+		void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
+		}
 
 		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
@@ -104,7 +114,7 @@ namespace PacketLoss.UI
 			UpdateRealTimePing(currentPingReply);
 		}
 
-		private void btnSaveResults_Click(object sender, EventArgs e)
+		private void BtnSaveResults_Click(object sender, EventArgs e)
 		{
 			if (bsPingReplies.DataSource is IList<PingInstanceReply>)
 			{
@@ -120,7 +130,10 @@ namespace PacketLoss.UI
 
 				sfdWorkbookSave.ShowDialog();
 
-				SaveResults(sfdWorkbookSave.FileName); 
+				if (sfdWorkbookSave.FileName != string.Empty)
+				{
+					SaveResults(sfdWorkbookSave.FileName);  
+				}
 			}
 		}
 
@@ -130,6 +143,8 @@ namespace PacketLoss.UI
 			{
 				_mainWindowPresenter.BackgroundWorker.CancelAsync();
 			}
+
+			pbPingProgress.Value = 100;
 		}
 
 		private void BtnSettingsReset_Click(object sender, EventArgs e)
@@ -139,14 +154,26 @@ namespace PacketLoss.UI
 
 		private void BtnSettingsStart_Click(object sender, EventArgs e)
 		{
-			_settingsCriteria = (PingCriteria)bsCriteria.DataSource;
+			switch (this.btnSettingsStart.Text)
+			{
+				case "Start":
+					_settingsCriteria = (PingCriteria)bsCriteria.DataSource;
+					_singlePingInstance = MainWindowPresenter.ConvertPingInstance(_settingsCriteria);
+					_mainWindowPresenter.PingWorker(_singlePingInstance, _settingsCriteria.NumberOfPings);
+					btnSettingsStart.Text = "Pause";
+					_mainWindowPresenter.PauseEvent.Set();
+					break;
+				case "Pause":
+					btnSettingsStart.Text = "Continue";
+					_mainWindowPresenter.PauseEvent.Reset();
+					break;
+				case "Continue":
+					btnSettingsStart.Text = "Pause";
+					_mainWindowPresenter.PauseEvent.Set();
+					break;
+			}
 
-			_singlePingInstance = MainWindowPresenter.ConvertPingInstance(_settingsCriteria);
-
-			_mainWindowPresenter.PingWorker(_singlePingInstance, _settingsCriteria.NumberOfPings);
-
-			btnSettingsStart.Text = "Busy";
-			btnSettingsStart.Enabled = false;
+			//btnSettingsStart.Enabled = false;
 		}
 
 		private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

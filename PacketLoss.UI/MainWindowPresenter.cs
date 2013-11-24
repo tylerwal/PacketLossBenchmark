@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PacketLoss.UI
 {
-	using System.Windows.Forms.VisualStyles;
+	using System.Threading;
 
 	public class MainWindowPresenter
 	{
@@ -70,9 +70,9 @@ namespace PacketLoss.UI
 			}
 		}
 
-		
-		
 		#endregion Properties
+
+		public ManualResetEvent PauseEvent = new ManualResetEvent(true);
 
 		#region Constructors
 
@@ -97,6 +97,8 @@ namespace PacketLoss.UI
 
 			for (int currentPingNumber = 1; currentPingNumber <= _numberOfPingAttempts; currentPingNumber++)
 			{
+				PauseEvent.WaitOne();
+
 				//used for cancelling/stopping the ping attempt
 				if (_backgroundWorker.CancellationPending)
 				{

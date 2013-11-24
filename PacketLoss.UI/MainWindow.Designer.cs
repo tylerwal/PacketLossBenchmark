@@ -69,6 +69,14 @@
 			this.roundTripTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bsPingReplies = new System.Windows.Forms.BindingSource(this.components);
 			this.btnSaveResults = new System.Windows.Forms.Button();
+			this.msMenu = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.resetSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.startTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stopTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbxPingSettings.SuspendLayout();
 			this.gbxPingSettingsOptional.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bsCriteria)).BeginInit();
@@ -78,6 +86,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplyStats)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPingReplies)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplies)).BeginInit();
+			this.msMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbxPingSettings
@@ -90,7 +99,7 @@
 			this.gbxPingSettings.Controls.Add(this.gbxPingSettingsOptional);
 			this.gbxPingSettings.Controls.Add(this.gbxPingSettingsRequired);
 			this.gbxPingSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.gbxPingSettings.Location = new System.Drawing.Point(13, 13);
+			this.gbxPingSettings.Location = new System.Drawing.Point(13, 27);
 			this.gbxPingSettings.Name = "gbxPingSettings";
 			this.gbxPingSettings.Size = new System.Drawing.Size(560, 240);
 			this.gbxPingSettings.TabIndex = 0;
@@ -282,7 +291,7 @@
 			this.gbxRealTime.Controls.Add(this.txtRealTimePingStatus);
 			this.gbxRealTime.Controls.Add(this.lblRealTimePingTime);
 			this.gbxRealTime.Controls.Add(this.txtRealTimePingTime);
-			this.gbxRealTime.Location = new System.Drawing.Point(13, 260);
+			this.gbxRealTime.Location = new System.Drawing.Point(13, 274);
 			this.gbxRealTime.Name = "gbxRealTime";
 			this.gbxRealTime.Size = new System.Drawing.Size(263, 77);
 			this.gbxRealTime.TabIndex = 1;
@@ -337,7 +346,7 @@
 			this.gbxPingResults.Controls.Add(this.lblUnsuccesfulPingPercentage);
 			this.gbxPingResults.Controls.Add(this.lblReplyAverageRoundTripTime);
 			this.gbxPingResults.Controls.Add(this.dgvPingReplies);
-			this.gbxPingResults.Location = new System.Drawing.Point(13, 343);
+			this.gbxPingResults.Location = new System.Drawing.Point(13, 357);
 			this.gbxPingResults.Name = "gbxPingResults";
 			this.gbxPingResults.Size = new System.Drawing.Size(395, 173);
 			this.gbxPingResults.TabIndex = 2;
@@ -447,15 +456,76 @@
 			this.btnSaveResults.Text = "Save Results";
 			this.btnSaveResults.UseVisualStyleBackColor = true;
 			// 
+			// msMenu
+			// 
+			this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+			this.msMenu.Location = new System.Drawing.Point(0, 0);
+			this.msMenu.Name = "msMenu";
+			this.msMenu.Size = new System.Drawing.Size(596, 24);
+			this.msMenu.TabIndex = 3;
+			this.msMenu.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem,
+            this.resetSettingsToolStripMenuItem,
+            this.startTestToolStripMenuItem,
+            this.stopTestToolStripMenuItem,
+            this.saveResultsToolStripMenuItem,
+            this.exitToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// testToolStripMenuItem
+			// 
+			this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+			this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.testToolStripMenuItem.Text = "Test Ping";
+			// 
+			// resetSettingsToolStripMenuItem
+			// 
+			this.resetSettingsToolStripMenuItem.Name = "resetSettingsToolStripMenuItem";
+			this.resetSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.resetSettingsToolStripMenuItem.Text = "Reset Settings";
+			// 
+			// startTestToolStripMenuItem
+			// 
+			this.startTestToolStripMenuItem.Name = "startTestToolStripMenuItem";
+			this.startTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.startTestToolStripMenuItem.Text = "Start Test";
+			// 
+			// stopTestToolStripMenuItem
+			// 
+			this.stopTestToolStripMenuItem.Name = "stopTestToolStripMenuItem";
+			this.stopTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.stopTestToolStripMenuItem.Text = "Stop Test";
+			// 
+			// saveResultsToolStripMenuItem
+			// 
+			this.saveResultsToolStripMenuItem.Name = "saveResultsToolStripMenuItem";
+			this.saveResultsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveResultsToolStripMenuItem.Text = "Save Results";
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(585, 542);
+			this.ClientSize = new System.Drawing.Size(596, 536);
 			this.Controls.Add(this.gbxPingResults);
 			this.Controls.Add(this.gbxRealTime);
 			this.Controls.Add(this.gbxPingSettings);
+			this.Controls.Add(this.msMenu);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.MainMenuStrip = this.msMenu;
 			this.Name = "MainWindow";
 			this.Text = "Ping Benchmark Tool by Waldron&Granado";
 			this.gbxPingSettings.ResumeLayout(false);
@@ -471,7 +541,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplyStats)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPingReplies)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsPingReplies)).EndInit();
+			this.msMenu.ResumeLayout(false);
+			this.msMenu.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -514,6 +587,14 @@
 		private System.Windows.Forms.Label lblRealTimePingStatus;
 		private System.Windows.Forms.TextBox txtRealTimePingStatus;
 		private System.Windows.Forms.Button btnSaveResults;
+		private System.Windows.Forms.MenuStrip msMenu;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem resetSettingsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem startTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stopTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveResultsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 	}
 }
 
