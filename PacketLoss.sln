@@ -14,24 +14,6 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Deployment", "Deployment\De
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = PacketLoss.Domain\\PacketLoss.Domain.csproj
-		SccProjectName1 = PacketLoss.Domain
-		SccLocalPath1 = PacketLoss.Domain
-		SccProjectUniqueName2 = PacketLoss.Console\\PacketLoss.ConsoleBased.csproj
-		SccProjectName2 = PacketLoss.Console
-		SccLocalPath2 = PacketLoss.Console
-		SccProjectUniqueName3 = PacketLoss.UI\\PacketLoss.UI.csproj
-		SccProjectName3 = PacketLoss.UI
-		SccLocalPath3 = PacketLoss.UI
-		SccProjectUniqueName4 = Deployment\\Deployment.isproj
-		SccProjectName4 = Deployment
-		SccLocalPath4 = Deployment
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
